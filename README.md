@@ -1,2 +1,15 @@
 # comms-manager
-Simple C++ Communication Manager using Shared Memory
+Simple C++ Communication Manager using Shared Memory for Linux.
+
+# Installation
+Compile the CommsManager library as usual:
+```
+mkdir build && cd build
+cmake ..
+make
+```
+If you wish, you can also install it:
+```
+sudo make install
+```
+Install path: `/usr/local/lib`
