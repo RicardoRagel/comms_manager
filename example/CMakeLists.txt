@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 2.8.9)
+project (comms_manager_example)
+
+# Link for the shared library:
+set ( PROJECT_LINK_LIBS libCommsManager.so)
+link_directories( /usr/local/lib )
+
+# Include header of the shared library
+#include_directories(/usr/local/include)
+
+# Create executable
+add_executable(example_pub example_pub.cpp)
+target_link_libraries(example_pub ${PROJECT_LINK_LIBS} )
+
+# Install the executable to be executable from everywhere
+# Use "sudo make install" to apply
+install(TARGETS example_pub DESTINATION /usr/local/bin)
+
+# NOTE: To execute this app from everywhere, apart of this last 
+# instructions you have to add in the .bashrc: 
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib

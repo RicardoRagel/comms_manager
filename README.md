@@ -13,3 +13,6 @@ If you wish, you can also install it:
 sudo make install
 ```
 Install path: `/usr/local/lib`
+
+# Usage
+An example about how to link and use this library is provided in the [example](example/) folder.
