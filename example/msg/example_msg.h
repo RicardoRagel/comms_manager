@@ -17,7 +17,7 @@ class ExampleMsg : public CommsManager
 		clock_gettime(CLOCK_REALTIME, &data.timestamp);
 
 		// By default, set to -1 and false
-		for(int i=0; i<8; i++)
+		for(int i=0; i<3; i++)
 			data.V[i]=-1;
 
 		data.flag = false;

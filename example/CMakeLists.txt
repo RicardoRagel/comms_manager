@@ -8,9 +8,11 @@ link_directories( /usr/local/lib )
 # Include header of the shared library
 #include_directories(/usr/local/include)
 
-# Create executable
+# Create executables
 add_executable(example_pub example_pub.cpp)
 target_link_libraries(example_pub ${PROJECT_LINK_LIBS} )
+add_executable(example_sub example_sub.cpp)
+target_link_libraries(example_sub ${PROJECT_LINK_LIBS} )
 
 # Install the executable to be executable from everywhere
 # Use "sudo make install" to apply
