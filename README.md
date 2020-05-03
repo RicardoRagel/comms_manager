@@ -1,5 +1,8 @@
 # comms-manager
-Simple C++ Communication Manager using Shared Memory for Linux.
+A simple C++ Inter-Process Communication (IPC) Manager using Shared Memory for Linux.
+
+# Overview
+Although there are already several good IPC libraries integrated in different frameworks ([ROS](https://www.ros.org/), )
 
 # Dependencies
 This library is provided with a CMakeLists compiler file, so to use it you will need:
