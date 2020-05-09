@@ -5,12 +5,28 @@ A simple C++ Inter-Process Communication (IPC) Manager using Shared Memory for L
 Although there are already several good IPC libraries integrated in different frameworks ([ROS](https://www.ros.org/), [Google Protobuf](https://developers.google.com/protocol-buffers), [Microsoft IPC](https://github.com/microsoft/IPC), ...), The idea of this repository is to provide a simple, easy and framework-independent way to communicate two processes using shared memory.
 
 # Dependencies
-This library is provided with a CMakeLists compiler file, so to use it you will need:
+This library is provided with a CMakeLists compiler file, so if you are going install it from source you need:
 * [CMake](https://cmake.org/)
 
 # Installation
 
 ## CommsManager Library
+
+### Debian package
+This library can be installed using directly the provided debian file (check Releases page). We recommend install it using the APT command:
+```bash
+sudo apt install ./comms_manager-1.0.0-Linux.deb
+```
+Then if you need to remove it later, you can do it easily using the command: `sudo apt remove comms_manager`.
+
+In case you are not able to use APT, use *dpkg* instead:
+```bash
+sudo dpkg -i comms_manager-1.0.0-Linux.deb
+```
+
+Once you have installed it, continue to the *Examples* and *Usage* sections.
+
+### From Source
 Compile the CommsManager library as usual:
 ```bash
 mkdir build && cd build
@@ -21,7 +37,7 @@ And install it:
 ```bash
 sudo make install
 ```
-The current installation path is: `/usr/local/lib`.
+The current installation path in Debian is: `/usr/local/lib`.
 
 ## Examples
 To test the provided examples, just go to the [example](example/) folder and compile them:
