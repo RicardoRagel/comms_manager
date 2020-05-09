@@ -48,6 +48,21 @@ cmake ..
 make
 ```
 
+## Running the examples:
+
+Once you have compiled and installed the library and compiled the example, just run the publisher example in one terminal:
+
+```bash
+./example_pub
+```
+
+and the subrscriber example in another terminal choosing the blocking option:
+
+```bash
+./example_sub true
+```
+In the following section, these examples will be used for the library usage explanation
+
 # Usage
 An example about how to link to and to use this library is provided in the [example](example/) folder.
 
@@ -118,18 +133,3 @@ else
 ```
 
 Check the complete example in [example_sub.cpp](example/example_sub.cpp).
-
-
-## Running the examples:
-
-Once you have compiled and installed the library and compiled the example, just run the publisher in one terminal:
-
-```bash
-./example_pub
-```
-
-and the subrscriber in another terminal choosing the blocking option:
-
-```bash
-./example_sub true
-```
