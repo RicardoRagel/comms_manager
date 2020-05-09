@@ -2,7 +2,7 @@
 A simple C++ Inter-Process Communication (IPC) Manager using Shared Memory for Linux.
 
 # Overview
-Although there are already several good IPC libraries integrated in different frameworks ([ROS](https://www.ros.org/), )
+Although there are already several good IPC libraries integrated in different frameworks ([ROS](https://www.ros.org/), [Google Protobuf](https://developers.google.com/protocol-buffers), [Microsoft IPC](https://github.com/microsoft/IPC), ...), The idea of this repository is to provide a simple, easy and framework-independent way to communicate two processes using shared memory.
 
 # Dependencies
 This library is provided with a CMakeLists compiler file, so to use it you will need:
