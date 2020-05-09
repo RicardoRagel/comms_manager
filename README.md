@@ -48,7 +48,7 @@ cmake ..
 make
 ```
 
-## Running the examples:
+### Running the examples:
 
 Once you have compiled and installed the library and compiled the example, just run the publisher example in one terminal:
 
