@@ -7,13 +7,29 @@ set(CMAKE_BUILD_TYPE Release)
 #########
 
 # Include headers directory
-include_directories(include)
+include_directories(include 
+					include/logger 
+					include/player)
 
-# Add source files to a variable
-set(SOURCES src/CommsManager.cpp)
+# Add lib source files to variables
+set(COMM_MANAGER_LIB src/CommsManager.cpp)
+set(LOGGER_LIB src/logger/CommsLogger.cpp)
+set(PLAYER_LIB src/player/CommsPlayer.cpp)
 
 # Generate the shared library from the sources
-add_library(CommsManager SHARED ${SOURCES})
+add_library(CommsManager SHARED ${COMM_MANAGER_LIB})
+add_library(CommsLogger  SHARED ${LOGGER_LIB})
+target_link_libraries(CommsLogger CommsManager -pthread)
+add_library(CommsPlayer  SHARED ${PLAYER_LIB})
+target_link_libraries(CommsPlayer CommsManager -pthread)
+
+# Generate logger executable
+add_executable(comms_logger src/logger/main.cpp)
+target_link_libraries(comms_logger CommsLogger)
+
+# Generate player executable
+add_executable(comms_player src/player/main.cpp)
+target_link_libraries(comms_player CommsPlayer)
 
 #########
 # INSTALL
@@ -22,12 +38,36 @@ add_library(CommsManager SHARED ${SOURCES})
 # Install the library and the headers
 # Use "sudo make install" to apply
 
+# Define installation folder paths: /usr/local/lib;include;bin
 include(GNUInstallDirs)
-install(TARGETS CommsManager DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}) # That is /usr/local/lib
-install(FILES include/CommsManager.hpp include/SharedMemory.hpp DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}) # That is /usr/local/include
+set(INSTALL_LIB_PATH 	${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+set(INSTALL_HEADER_PATH ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR})
+set(INSTALL_BIN_PATH 	${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR})
+
+# CommsManager library
+install(TARGETS CommsManager 
+		DESTINATION ${INSTALL_LIB_PATH})
+install(FILES include/CommsManager.hpp include/SharedMemory.hpp 
+		DESTINATION ${INSTALL_HEADER_PATH})
+# CommsLogger library
+install(TARGETS CommsLogger 
+		DESTINATION ${INSTALL_LIB_PATH}) 
+install(FILES include/logger/CommsLogger.hpp 
+		DESTINATION ${INSTALL_HEADER_PATH})
+# CommsPlayer library
+install(TARGETS CommsPlayer 
+		DESTINATION ${INSTALL_LIB_PATH}) 
+install(FILES include/player/CommsPlayer.hpp 
+		DESTINATION ${INSTALL_HEADER_PATH})
+# comms_logger executable
+install(TARGETS comms_logger 
+		DESTINATION ${INSTALL_BIN_PATH})
+# comms_player executable
+install(TARGETS comms_player 
+		DESTINATION ${INSTALL_BIN_PATH})
 
 #########
-# PACK
+# PACK (DEBIAN)
 #########
 # WARNING: Previous INSTALL must be done
 
@@ -35,7 +75,7 @@ install(FILES include/CommsManager.hpp include/SharedMemory.hpp DESTINATION ${CM
 # Use "sudo cpack" to apply
 
 set(LIB_VERSION_MAJOR 1)
-set(LIB_VERSION_MINOR 0)
+set(LIB_VERSION_MINOR 1)
 set(LIB_VERSION_PATCH 0)
 set(LIB_VERSION ${LIB_VERSION_MAJOR}.${LIB_VERSION_MINOR}.${LIB_VERSION_PATCH})
 set(CPACK_PACKAGE_VERSION ${LIB_VERSION})

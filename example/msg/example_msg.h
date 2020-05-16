@@ -17,10 +17,10 @@ class ExampleMsg : public CommsManager
 		clock_gettime(CLOCK_REALTIME, &data.timestamp);
 
 		// By default, set to -1 and false
+		data.flag = false;
+		data.i = -1;
 		for(int i=0; i<3; i++)
 			data.V[i]=-1;
-
-		data.flag = false;
 	}
 																	
     // Data struct

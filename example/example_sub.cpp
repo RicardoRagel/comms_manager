@@ -119,11 +119,12 @@ int main(int argc, char *argv[])
 
 		if(new_msg_exist)
 		{
-			printf("[%.3f] New message: V=[%.2f, %.2f, %.2f], flag=%s\n", GetTime()/1e6, 
+			printf("[%.3f] New message: flag=%s, i=%d, V=[%.2f, %.2f, %.2f]\n", GetTime()/1e6, 
+																		  msg.data.flag == false?"false":"true",
+																		  msg.data.i,
 																		  msg.data.V[0], 
 																		  msg.data.V[1], 
-																		  msg.data.V[2], 
-																		  msg.data.flag == false?"false":"true");
+																		  msg.data.V[2]);
 		}
 		else
 		{

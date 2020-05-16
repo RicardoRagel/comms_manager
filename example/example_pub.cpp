@@ -61,6 +61,8 @@ int main(int argc, char *argv[])
 
 	printf("Example Comms Channel Publisher writing messages through the channel: %s\n\n", channel_name.c_str());
 	
+	int counter = 0;
+
 	while(isRunning)
 	{
 		// Sleep up to 0.1 sec and save the initial cycle time
@@ -68,12 +70,14 @@ int main(int argc, char *argv[])
 		InitialTime = GetTime();
 		
 		// Fill message with some random numbers
+		msg.data.flag = !msg.data.flag;
+		msg.data.i = counter;
+		counter ++;
 		for (int i=0; i<3; i++)
 		{
-			// Save as message (range 12.6)
+			// Save as message
 			msg.data.V[i] = i;
 		}
-		msg.data.flag = !msg.data.flag;
 		
 		// Fill timestamp with actual time
 		clock_gettime(CLOCK_REALTIME, &msg.data.timestamp);

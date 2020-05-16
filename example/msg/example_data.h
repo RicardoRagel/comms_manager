@@ -7,8 +7,9 @@
 struct ExampleData
 {
 	struct  timespec timestamp; // Real Time
-	float 	V[3];		    	// Example array data 
 	bool 	flag;				// Example bool data
+	int		i;					// Example int data
+	float 	V[3];		    	// Example array data 
 };
 
 
